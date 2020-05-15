@@ -159,7 +159,7 @@ namespace Dal
                     {
                         SerialNumber = reader.GetInt32("serialnumber"),
                         Name = reader.GetString("Name"),
-                        Quantity = reader.GetInt16(" quantity"),
+                        Quantity = reader.GetInt32("Quantity"),
                         RetailPrice = reader.GetDecimal("Sellprice"),
                         WholeSalePrice = reader.GetDecimal("Serialnumber")
                     };
