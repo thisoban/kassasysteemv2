@@ -12,5 +12,6 @@ namespace DataModel
         public int ProductId { get; set; }
         public int Quantity { get; set; }
         public int WholeSalePrice { get; set; }
+        public string status { get; }
     }
 }

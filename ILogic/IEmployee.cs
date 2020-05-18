@@ -12,5 +12,6 @@ namespace ILogic
         void Transactions();
         void Reports();
         List<OrderModel> Orders();
+        bool RegisterCustomer(CustomerModel customer);
     }
 }

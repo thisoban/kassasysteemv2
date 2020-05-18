@@ -12,5 +12,6 @@ namespace IDal
         bool RemoveProduct(ProductModel product);
         bool AddProducts(List<ProductModel> addproducts);
         bool AddProduct(ProductModel newproduct);
+        bool RetourProduct(int serialnumber);
     }
 }

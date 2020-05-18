@@ -9,5 +9,8 @@ namespace FactoryLogic
         {
             return new Product();
         }
+        //todo order
+        //todo employee
+        //todo transaction
     }
 }

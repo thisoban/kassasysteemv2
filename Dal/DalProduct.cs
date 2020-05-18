@@ -161,7 +161,8 @@ namespace Dal
                         Name = reader.GetString("Name"),
                         Quantity = reader.GetInt32("Quantity"),
                         RetailPrice = reader.GetDecimal("Sellprice"),
-                        WholeSalePrice = reader.GetDecimal("Serialnumber")
+                        WholeSalePrice = reader.GetDecimal("Serialnumber"),
+                        Status = reader.GetString("status")
                     };
                     // save uitlening to the list
                     productList.Add(product);
@@ -183,8 +184,9 @@ namespace Dal
         public bool RemoveProduct(ProductModel product)
         {
             bool Succeful = false;
+            dal.conn.Open();
             //todo string open  command close
-            
+            string query = "";
             try
             {
                 Succeful = true;
@@ -199,6 +201,29 @@ namespace Dal
             }
 
             return Succeful;
+        }
+
+        public bool RetourProduct(int SerialNumber)
+        {
+            bool succesful = false;
+            string query = "UPDATE product SET Quantity = Quantity + 1 WHERE Serialnumber = @serialnumber";
+            dal.conn.Open();
+            try
+            {
+                MySqlCommand command = new MySqlCommand(query);
+                command.Parameters.Add(new MySqlParameter("@serialnumber", SerialNumber));
+                command.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            finally
+            {
+                dal.conn.Close();
+            }
+            return succesful;
         }
     }
 }

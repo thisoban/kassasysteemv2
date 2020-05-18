@@ -16,4 +16,9 @@
     <ProjectReference Include="..\ILogic\ILogic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Employee\" />
+    <Folder Include="Views\Transaction\" />
+  </ItemGroup>
+
 </Project>

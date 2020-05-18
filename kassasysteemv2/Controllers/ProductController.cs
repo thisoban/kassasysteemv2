@@ -11,8 +11,10 @@ namespace kassasysteemv2.Controllers
         private readonly  ILogic.IProduct Logic = FactoryLogic.FactoryLogic.ProductLogic();
         public IActionResult Stock()
         {
-         
             return View(Logic.Products());
         }
+        //todo maak een update
+        //todo maak een remove
+        
     }
 }

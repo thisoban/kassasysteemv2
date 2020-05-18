@@ -2,10 +2,7 @@
 
 namespace DataModel
 {
-    public enum Status
-    {
-        Done, Ready, Coming
-    }
+   
     public class ProductModel
     {
 
@@ -14,7 +11,7 @@ namespace DataModel
         public int Quantity { get; set; }
         public decimal WholeSalePrice { get; set; }
         public decimal RetailPrice { get; set; }
-        public Status Status { get; set; }
+        public string Status { get; set; }
     }
 }
    
