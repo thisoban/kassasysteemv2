@@ -6,6 +6,6 @@ namespace DataModel
 {
    public class StockModelcs
    {
-       public List<ProductModel> Products { get; }
+       public List<ProductModel> Products { get;}
    }
 }

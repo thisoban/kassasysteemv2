@@ -12,7 +12,7 @@ namespace Dal
         public bool AddProduct(ProductModel newproduct)
         {
             bool productadded = false;
-            string query = "INSERT INTO product(Name,  Quantity, Sellprice, wholesaleprice, Serialnumber) " +
+            string query = "INSERT INTO product(Name, Quantity, Sellprice, wholesaleprice, Serialnumber) " +
                            "VALUES (@name,@quantity,@sellprice,@wholesaleprice,@serialnumber)";
             dal.conn.Open();
             MySqlCommand command = new MySqlCommand(query, dal.conn);
@@ -126,7 +126,6 @@ namespace Dal
                     data.Quantity = reader.GetInt32(2);
                     data.RetailPrice = reader.GetDecimal(3);
                     data.WholeSalePrice= reader.GetDecimal(4);
-
                 }
 
                 return data;
@@ -154,7 +153,7 @@ namespace Dal
                 //read through all the data
                 while (reader.Read())
                 {
-                    //create productlist
+                    
                     ProductModel product = new ProductModel()
                     {
                         SerialNumber = reader.GetInt32("serialnumber"),
@@ -164,7 +163,7 @@ namespace Dal
                         WholeSalePrice = reader.GetDecimal("Serialnumber"),
                         Status = reader.GetString("status")
                     };
-                    // save uitlening to the list
+                    // save product to the list products
                     productList.Add(product);
                 }
             }
@@ -177,7 +176,6 @@ namespace Dal
             {
                 dal.conn.Close();
             }
-
             return productList;
         }
 
@@ -185,10 +183,12 @@ namespace Dal
         {
             bool Succeful = false;
             dal.conn.Open();
-            //todo string open  command close
-            string query = "";
+            string query = "Delete * product Where serialnumber = @serialnumber";
             try
             {
+                MySqlCommand cmd = new MySqlCommand(query);
+                cmd.Parameters.Add(new MySqlParameter("@serialnumber", product.SerialNumber));
+                cmd.ExecuteNonQuery();
                 Succeful = true;
             }
             catch (Exception e)
